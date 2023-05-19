@@ -9,15 +9,19 @@
     <title>Calculatrice</title>
 </head>
 <body>
+    <!--C'est le commencement de la div de la liste déroulante.-->
     <div class="listeDeroulant">
-        <select id="color">
+        <select onchange="changerTheme()">
             <option selected>JauneCyan Rose</option>
             <option>BleueCyan Mauve</option>
             <option>VertCyan Gris</option>
         </select>
     </div>
-    <img src="./images/ak_logo.png">
-    <div class="centre">
+    <!--C'est la balise img du logo AK-->
+    <img src="./images/ak_logo.png" onload="clignoter()">
+    <!--C'est le commencement de l'interface de la calculatrice contenant l'input et les bouton bien arranger dans des balises div
+    pour pouvoir bien arranger avec le CSS.-->
+    <div id="centre" class="centre">
         <div class="calculatriceInterface">
             <div class="saisie">
                 <input type="text" class="ecran" id="ecran" value="0">

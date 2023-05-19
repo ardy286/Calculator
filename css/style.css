@@ -89,6 +89,7 @@ select
     background-image: linear-gradient(to bottom right,cyan, yellow,pink);
     width: 20px;
     float: left;
+    font-family: 'Trebuchet MS', sans-serif;
 }
 
 img
