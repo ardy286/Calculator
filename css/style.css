@@ -1,6 +1,6 @@
 body
 {
-    background: url(../images/background.jpg) no-repeat fixed center/cover;
+    background: url(../images/background.jpg) no-repeat fixed center;
 }
 
 .centre
@@ -82,4 +82,20 @@ button:active
 {
     background: aqua;
     border: 2px solid black;
+}
+
+select
+{
+    background-image: linear-gradient(to bottom right,cyan, yellow,pink);
+    width: 20px;
+    float: left;
+}
+
+img
+{
+    display: block;
+    width: 63px;
+    height: 63px;
+    float: right;
+    margin-top: -18px;
 }
