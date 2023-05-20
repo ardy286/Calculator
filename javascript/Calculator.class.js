@@ -43,10 +43,10 @@ class Calculator {
         if(boutton == "0" || boutton == "1" || boutton == "2" ||
         boutton == "3" || boutton == "4" || boutton == "5" ||
         boutton == "6" || boutton == "7" || boutton == "8" ||
-        boutton == "9" || boutton == "C" || boutton == "Backspace" ||
+        boutton == "9" || boutton == "C" || boutton == "." ||
         boutton == "%" || boutton == "/" || boutton == "x" ||
         boutton == "-" || boutton == "+" || boutton == "=" ||
-        boutton == ",")
+        boutton == "Backspace")
         {
             alert("Good");
         }else

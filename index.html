@@ -32,13 +32,13 @@
     <div id="centre" class="centre">
         <div class="calculatriceInterface">
             <div class="saisie">
-                <input type="text" class="ecran" id="ecran" value="0" onkeypress="uneCalculatrice.toucher(event)">
+                <input type="text" class="ecran" id="ecran" value="0" onkeydown="uneCalculatrice.toucher(event)">
             </div>
             <div class="boutton">
                 <button onclick="uneCalculatrice.presser('C')">C</button>
                 <button onclick="uneCalculatrice.presser('←')">←</button>
                 <button onclick="uneCalculatrice.presser('%')">%</button>
-                <button onclick="presser('÷')">÷</button>
+                <button onclick="uneCalculatrice.presser('÷')">÷</button>
             </div>
             <div class="boutton">
                 <button onclick="uneCalculatrice.presser('7')">7</button>
@@ -60,7 +60,7 @@
             </div>
             <div class="boutton">
                 <button class="zero" onclick="uneCalculatrice.presser('0')">0</button>
-                <button onclick="uneCalculatrice.presser(',')">,</button>
+                <button onclick="uneCalculatrice.presser('.')">.</button>
                 <button onclick="uneCalculatrice.presser('=')">=</button>
             </div>
         </div>
