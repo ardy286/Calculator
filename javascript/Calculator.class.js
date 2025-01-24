@@ -1,57 +1,66 @@
 class Calculator {
     constructor() {
         this.nombreEcran = "0";
-    }
-    
-    presser(boutton)
-    {
-        if (boutton == "C")
-        {
-            this.nombreEcran = "0";
-            document.getElementById('ecran').value = this.nombreEcran;
-        }else if(boutton == "0" || boutton == "1" || boutton == "2" ||
-                boutton == "3" || boutton == "4" || boutton == "5" ||
-                boutton == "6" || boutton == "7" || boutton == "8" ||
-                boutton == "9")
-        {
-            if(this.nombreEcran == "0")
-            {
-                this.nombreEcran = boutton;
-                document.getElementById('ecran').value = this.nombreEcran;
-            }else
-            {
-                this.nombreEcran += boutton;
-                document.getElementById('ecran').value = this.nombreEcran;
-            }
-        }else if(boutton == "←")
-        {
-            if(this.nombreEcran.length == 1)
-            {
-                this.nombreEcran = "0";
-                document.getElementById('ecran').value = this.nombreEcran;
-            }else
-            {
-                this.nombreEcran = this.nombreEcran.substring(0,(this.nombreEcran.length-1));
-                document.getElementById('ecran').value = this.nombreEcran;
-            }
-        }
+        this.operation = null;
+        this.dernierNombre = null;
     }
 
-    toucher(event)
-    {
-        var boutton =event.key;
-        if(boutton == "0" || boutton == "1" || boutton == "2" ||
-        boutton == "3" || boutton == "4" || boutton == "5" ||
-        boutton == "6" || boutton == "7" || boutton == "8" ||
-        boutton == "9" || boutton == "C" || boutton == "." ||
-        boutton == "%" || boutton == "/" || boutton == "x" ||
-        boutton == "-" || boutton == "+" || boutton == "=" ||
-        boutton == "Backspace")
-        {
-            alert("Good");
-        }else
-        {
-            alert("Le boutton "+boutton+" ne s'applique pas sur la calculatrice.");
+    presser(bouton) {
+        const ecran = document.getElementById('ecran');
+
+        if (bouton === "C") {
+            this.nombreEcran = "0";
+            this.operation = null;
+            this.dernierNombre = null;
+        } else if ("0123456789.".includes(bouton)) {
+            if (this.nombreEcran === "0") {
+                this.nombreEcran = bouton;
+            } else {
+                this.nombreEcran += bouton;
+            }
+        } else if ("+-*/".includes(bouton)) {
+            this.dernierNombre = parseFloat(this.nombreEcran);
+            this.operation = bouton;
+            this.nombreEcran = "0";
+        } else if (bouton === "=") {
+            if (this.operation && this.dernierNombre !== null) {
+                const actuel = parseFloat(this.nombreEcran);
+                switch (this.operation) {
+                    case "+":
+                        this.nombreEcran = (this.dernierNombre + actuel).toString();
+                        break;
+                    case "-":
+                        this.nombreEcran = (this.dernierNombre - actuel).toString();
+                        break;
+                    case "*":
+                        this.nombreEcran = (this.dernierNombre * actuel).toString();
+                        break;
+                    case "/":
+                        this.nombreEcran = (this.dernierNombre / actuel).toString();
+                        break;
+                }
+                this.operation = null;
+                this.dernierNombre = null;
+            }
+        } else if (bouton === "←") {
+            this.nombreEcran = this.nombreEcran.slice(0, -1) || "0";
+        }
+
+        ecran.value = this.nombreEcran;
+    }
+
+    toucher(event) {
+        const bouton = event.key;
+        if ("0123456789.+-*/=Backspace".includes(bouton)) {
+            if (bouton === "Backspace") {
+                this.presser("←");
+            } else if (bouton === "Enter") {
+                this.presser("=");
+            } else {
+                this.presser(bouton);
+            }
+        } else {
+            alert(`Le bouton "${bouton}" n'est pas valide.`);
         }
     }
 }
